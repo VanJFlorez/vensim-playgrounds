@@ -1,0 +1,156 @@
+{UTF-8}
+Población  = A FUNCTION OF( -Defunciones,-Emigracion,migracion,Nacimientos) ~~|
+Población= INTEG (
+	migracion+Nacimientos-Defunciones,
+		1000)
+	~	
+	~		|
+
+Emigracion=A FUNCTION OF(Emigracion,Tasa Emigracion) ~~|
+Emigracion=
+	Población*Tasa Emigracion
+	~	
+	~		|
+
+tasa migra=A FUNCTION OF(tasa migra) ~~|
+tasa migra=
+	~	
+	~		|
+
+Tasa Emigracion=
+	0.03
+	~	
+	~		|
+
+migracion=A FUNCTION OF(migracion,Población,tasa migra) ~~|
+migracion=
+	0.01
+	~	
+	~		|
+
+Nacimientos=
+	Población*Tasa de Nacimientos
+	~	
+	~		|
+
+Defunciones=
+	Población*Tasa de defunciones
+	~	
+	~		|
+
+Tasa de defunciones=
+	0.1
+	~	
+	~		|
+
+Tasa de Nacimientos=
+	0.05
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Week
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Week
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Week [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Week [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,120,0
+10,1,Población,409,249,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+12,2,48,172,250,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(323,250)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(223,250)|
+11,5,48,271,250,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,6,Nacimientos,271,269,40,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,7,48,643,262,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(588,262)|
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(490,262)|
+11,10,48,537,262,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,Defunciones,537,281,39,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,12,1,10,1,0,0,0,0,64,0,-1--1--1,,1|(480,328)|
+1,13,1,5,1,0,0,0,0,64,0,-1--1--1,,1|(334,336)|
+10,14,Tasa de Nacimientos,164,123,40,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,15,Tasa de defunciones,590,118,38,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,16,14,5,1,0,0,0,0,64,0,-1--1--1,,1|(260,162)|
+1,17,15,10,1,0,0,0,0,64,0,-1--1--1,,1|(545,180)|
+12,18,1378644,858,274,184,170,3,188,0,0,1,0,0,0,0,0,0,0,0,0
+resumen_modelo
+12,19,48,404,454,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,20,22,1,4,0,0,22,0,0,0,-1--1--1,,1|(404,313)|
+1,21,22,19,100,0,0,22,0,0,0,-1--1--1,,1|(404,408)|
+11,22,48,404,364,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,23,migracion,443,364,31,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,24,tasa migra,205,425,33,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,25,24,22,1,0,0,0,0,64,0,-1--1--1,,1|(287,357)|
+1,26,1,23,1,0,0,0,0,64,0,-1--1--1,,1|(477,298)|
+12,32,48,408,57,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,34,36,32,4,0,0,22,0,0,0,-1--1--1,,1|(408,103)|
+1,35,36,1,100,0,0,22,0,0,0,-1--1--1,,1|(408,191)|
+11,36,0,408,147,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,37,Emigracion,452,147,36,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,38,Tasa Emigracion,312,82,52,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,39,38,36,1,0,0,0,0,64,0,-1--1--1,,1|(336,170)|
+///---\\\
+:GRAPH resumen_modelo
+:TITLE resumen modelo
+:SCALE
+:VAR Población
+:VAR Nacimientos
+:VAR Defunciones
+:L<%^E!@
+1:Current2.vdfx
+1:Current4.vdfx
+1:Current.vdfx
+1:Current3.vdfx
+9:Current4
+23:0
+15:0,0,0,0,0,0
+19:120,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+4:Time
+5:migracion
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:3
+41:0
+76:0
+77:0
+78:0
+79:0
+80:0
+81:0
+24:0
+25:100
+26:100
+75:
+43:

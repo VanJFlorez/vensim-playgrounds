@@ -1,0 +1,87 @@
+{UTF-8}
+lluvia=
+	RAMP(1, 0, 50)
+	~	
+	~	Returns 0 until the start time and then slopes upward until end time and then holds \
+		constant.
+		
+		Same as:
+		IF THEN ELSE ( Time > start time,
+			       IF THEN ELSE ( Time < end time,
+			               slope*(Time - start time),
+			               slope*(end time - start time),
+			       0)
+	|
+
+paraguas=
+	"relacion lluvia-paraguas"(lluvia)
+	~	
+	~	f(x); f := rlacion lluvia-paraguas; x := lluvia
+	|
+
+"relacion lluvia-paraguas"(
+	[(0,0)-(50,100)],(0,0),(30,10),(50,100))
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,lluvia,229,150,17,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,2,paraguas,454,146,29,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,3,1,2,1,0,0,0,0,64,0,-1--1--1,,1|(325,97)|
+12,4,0,563,235,95,28,8,7,0,0,-1,0,0,0,0,0,0,0,0,0
+condicionar el valor de paraguas a partir del de lluvia, eso hace esta flecha
+10,5,"relacion lluvia-paraguas",645,135,48,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,6,5,2,1,0,0,0,0,64,0,-1--1--1,,1|(532,83)|
+///---\\\
+:L<%^E!@
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+5:paraguas
+76:0
+77:0
+78:0
+79:0
+80:0
+81:0
+24:0
+25:0
+26:0
+75:
+43:

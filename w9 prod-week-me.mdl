@@ -1,0 +1,254 @@
+{UTF-8}
+ajuste de existencias=
+	(existencias deseadas-Inventarios)/periodo de ajusto de existencias
+	~	
+	~		|
+
+contrataciones=
+	(Empleados necesarios-Trabajadores)/periodo de contrataciones
+	~	
+	~		|
+
+contratados=
+	contrataciones+salida
+	~	
+	~		|
+
+demanda prevista=
+	SMOOTH(pedidos, periodo demanda prevista)
+	~	
+	~		|
+
+Empleados necesarios=
+	ordenes de fabricacion/productividad
+	~	
+	~		|
+
+entregas=
+	pedidos
+	~	
+	~		|
+
+existencias deseadas=
+	demanda prevista*periodo de existencias deseadas
+	~	
+	~		|
+
+Inventarios= INTEG (
+	producción-entregas,
+		4000
+		)
+	~	
+	~		|
+
+ordenes de fabricacion=
+	ajuste de existencias + demanda prevista
+	~	
+	~		|
+
+pedidos=
+	1000 + STEP(100, 10)
+	~	
+	~	la función paso: sumará el 10% que prevee el gerente según nuestro \
+		problema y se lo añadirá a la constante de pedidos en el tiempo (semana) \
+		10 (parametro dos)
+	|
+
+periodo de ajusto de existencias=
+	8
+	~	
+	~		|
+
+periodo de contrataciones=
+	24
+	~	
+	~		|
+
+periodo de existencias deseadas=
+	4
+	~	
+	~		|
+
+periodo demanda prevista=
+	1
+	~	
+	~		|
+
+produccion real=
+	Trabajadores*productividad
+	~	
+	~		|
+
+producción=
+	produccion real
+	~	
+	~		|
+
+productividad=
+	20
+	~	
+	~		|
+
+salida=
+	Trabajadores/50
+	~	
+	~	un trabajador dura 50 semanas, es equivalente a, cada semana se me va un \
+		cincuentavo de los trabajadores
+	|
+
+Trabajadores= INTEG (
+	contratados-salida,
+		10)
+	~	
+	~	se asumen 10 empleados inicialmente
+	|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 1000
+	~	Week
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Week
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Week [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Week [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,90,0
+10,1,Inventarios,671,132,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+12,2,48,477,116,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(598,118)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(520,118)|
+11,5,48,559,118,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,6,producción,559,137,36,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,7,48,891,131,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(841,131)|
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(750,131)|
+11,10,48,796,131,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,entregas,796,150,27,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,pedidos,966,276,26,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,13,ordenes de fabricacion,437,245,36,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,14,12,10,1,0,0,0,0,64,0,-1--1--1,,1|(857,260)|
+12,15,0,1062,280,58,12,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|8|I|0-0-0,0,0,0,0,0,0
+aqui le estoy diciendo a la bodega, oiga entrege tanto
+12,16,0,407,192,49,18,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|8|I|0-0-0,0,0,0,0,0,0
+le estoy diciendo a la fábrica, oiga produzca tanto
+12,17,0,980,220,66,18,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|8|I|0-0-0,0,0,0,0,0,0
+este flujo tiene el mismo valor que la variable porque entrego todo lo que me pidan
+12,18,0,742,75,70,18,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|8|I|0-0-0,0,0,0,0,0,0
+según el problema tiene un valor incial de 4000, que es el que espicificamos allá en su diálogo
+12,19,0,1075,319,81,24,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|8|I|0-0-0,0,0,0,0,0,0
+además, el problema dice "la fábrica tiene la capcidad de producir y entregar cualquier número de pedidos a la semana
+10,20,demanda prevista,689,370,55,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,21,12,20,1,0,0,0,0,64,0,-1--1--1,,1|(864,364)|
+10,22,periodo demanda prevista,861,404,56,19,8,3,0,2,0,0,0,0,-1--1--1,255-0-0,|0||255-0-0,0,0,0,0,0,0
+1,23,22,20,1,0,0,0,0,64,0,-1--1--1,,1|(755,425)|
+10,24,existencias deseadas,692,292,34,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,25,20,24,1,0,0,0,0,64,0,-1--1--1,,1|(701,340)|
+10,26,periodo de existencias deseadas,813,297,66,19,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|0||255-0-0,0,0,0,0,0,0
+1,27,26,24,1,0,0,0,0,64,0,-1--1--1,,1|(748,261)|
+12,28,0,833,324,46,7,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|8|I|0-0-0,0,0,0,0,0,0
+variable para control
+12,29,0,893,429,43,7,8,7,0,8,-1,0,0,0,-1--1--1,0-0-0,|8||0-0-0,0,0,0,0,0,0
+variable para control
+10,30,ajuste de existencias,580,215,34,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,31,24,30,1,0,0,0,0,64,0,-1--1--1,,1|(597,266)|
+1,32,1,30,1,0,0,0,0,64,0,-1--1--1,,1|(609,158)|
+10,33,periodo de ajusto de existencias,717,204,66,19,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|0||255-0-0,0,0,0,0,0,0
+12,34,0,755,231,46,7,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|8|I|0-0-0,0,0,0,0,0,0
+variable para control
+1,35,33,30,1,0,0,0,0,64,0,-1--1--1,,1|(654,253)|
+1,36,30,13,1,0,0,0,0,64,0,-1--1--1,,1|(526,274)|
+1,37,20,13,1,0,0,0,0,64,0,-1--1--1,,1|(510,374)|
+12,38,0,535,302,68,24,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|8|I|0-0-0,0,0,0,0,0,0
+'ademas de cubrir lo de esta semana, qué me hace falta para mantener constantes mis inventarios'
+10,39,Trabajadores,691,598,48,19,3,131,0,0,0,0,0,0,0,0,0,0,0,0
+12,40,48,897,600,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,41,43,39,4,0,0,22,0,0,0,-1--1--1,,1|(773,600)|
+1,42,43,40,100,0,0,22,0,0,0,-1--1--1,,1|(853,600)|
+11,43,48,813,600,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,44,contratados,813,619,38,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,45,48,440,600,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,46,48,45,4,0,0,22,0,0,0,-1--1--1,,1|(499,597)|
+1,47,48,39,100,0,0,22,0,0,0,-1--1--1,,1|(601,597)|
+11,48,48,554,597,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,49,salida,554,616,19,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,50,39,48,1,0,0,0,0,64,0,-1--1--1,,1|(594,554)|
+10,51,productividad,402,475,44,11,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|0||255-0-0,0,0,0,0,0,0
+12,52,0,393,494,43,7,8,7,0,8,-1,0,0,0,-1--1--1,0-0-0,|8||0-0-0,0,0,0,0,0,0
+variable para control
+10,53,Empleados necesarios,626,496,36,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,54,13,53,1,0,0,0,0,64,0,-1--1--1,,1|(467,414)|
+1,55,51,53,1,0,0,0,0,64,0,-1--1--1,,1|(498,506)|
+10,56,contrataciones,891,509,46,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,57,53,56,1,0,0,0,0,64,0,-1--1--1,,1|(733,456)|
+1,58,39,56,1,0,0,0,0,64,0,-1--1--1,,1|(746,526)|
+10,59,periodo de contrataciones,1066,502,46,19,8,3,0,2,0,0,0,0,-1--1--1,0-0-0,|0||255-0-0,0,0,0,0,0,0
+1,60,59,56,1,0,0,0,0,64,0,-1--1--1,,1|(972,475)|
+1,61,56,43,0,0,0,0,0,64,0,-1--1--1,,1|(853,552)|
+1,62,48,43,1,0,0,0,0,64,0,-1--1--1,,1|(661,686)|
+10,63,produccion real,196,350,49,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,64,39,63,1,0,0,0,0,64,0,-1--1--1,,1|(275,619)|
+1,65,51,63,1,0,0,0,0,64,0,-1--1--1,,1|(275,462)|
+1,66,63,6,1,0,0,0,0,64,0,-1--1--1,,1|(275,223)|
+///---\\\
+:GRAPH GRAPH
+:TITLE  
+:SCALE
+:VAR Inventarios
+:SCALE
+:VAR INITIAL TIME
+:SCALE
+:VAR contratados
+:SCALE
+:VAR demanda prevista
+:L<%^E!@
+1:Current.vdfx
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:90,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+4:Time
+5:contrataciones
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:3
+41:0
+76:0
+77:0
+78:0
+79:0
+80:0
+81:0
+24:0
+25:1000
+26:1000
+75:
+43:
