@@ -5,17 +5,18 @@ pedidos=
 	~		|
 
 produccion=
-	ordenes de produccion
+	DELAY FIXED(ordenes de produccion, 2, 0)
 	~	
 	~		|
 
 ordenes de produccion=
-	pedidos
+	IF THEN ELSE(pedidos > 0, pedidos, 0)
 	~	
 	~		|
 
 "tabla-pedidos"(
-	[(0,0)-(100,100)],(0,0),(10,30),(20,10),(50,60),(60,5),(70,80),(100,100))
+	[(0,-10)-(110,100)],(0,0),(10,30),(20,10),(50,60),(60,5),(70,80),(100,100),(110,-10)\
+		)
 	~	
 	~		|
 
@@ -36,7 +37,7 @@ inventarios= INTEG (
 		Simulation Control Parameters
 	|
 
-FINAL TIME  = 100
+FINAL TIME  = 110
 	~	Week
 	~	The final time for the simulation.
 	|
@@ -47,7 +48,7 @@ INITIAL TIME  = 0
 	|
 
 SAVEPER  = 
-        TIME STEP
+        TIME STEP 
 	~	Week [0,?]
 	~	The frequency with which output is stored.
 	|
@@ -76,19 +77,22 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,1
 1,13,12,5,1,0,0,0,0,64,0,-1--1--1,,1|(632,292)|
 10,14,ordenes de produccion,363,339,36,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
 1,15,12,14,1,0,0,0,0,64,0,-1--1--1,,1|(489,391)|
-1,16,14,10,1,0,0,0,0,64,0,-1--1--1,,1|(290,269)|
+1,16,14,10,1,0,0,0,2,65,0,-1--1--1,|0||-1--1--1,1|(290,269)|
 10,17,"tabla-pedidos",801,344,44,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
 1,18,17,12,1,0,0,0,0,64,0,-1--1--1,,1|(676,377)|
 10,19,Time,642,474,26,11,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|12||128-128-128,0,0,0,0,0,0
 1,20,19,12,1,0,0,0,0,64,0,-1--1--1,,1|(565,427)|
 12,21,0,662,517,93,30,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|9|I|0-0-0,0,0,0,0,0,0
 variable shadow (sombra), simplemente es una referencia a otra de las variables ya definidas en el modelo
-12,22,0,469,139,92,22,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|9|I|0-0-0,0,0,0,0,0,0
+12,23,0,469,139,92,22,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|9|I|0-0-0,0,0,0,0,0,0
 si produccion y entregas son iguales mi nivel de inventarios es constante por que todo lo que pido lo entrego
+12,24,0,136,452,65,22,8,7,0,24,-1,0,0,0,-1--1--1,0-0-0,|9|I|0-0-0,0,0,0,0,0,0
+usa shift pare seleccionar varios elementos y graficarlos
 ///---\\\
 :L<%^E!@
+1:Current-delayed.vdfx
 1:Current.vdfx
-9:Current
+9:Current-delayed
 23:0
 15:0,0,0,0,0,0
 19:130,0
@@ -98,7 +102,7 @@ si produccion y entregas son iguales mi nivel de inventarios es constante por qu
 72:0
 73:0
 4:Time
-5:inventarios
+5:produccion
 35:Date
 36:YYYY-MM-DD
 37:2000
@@ -113,7 +117,7 @@ si produccion y entregas son iguales mi nivel de inventarios es constante por qu
 80:0
 81:0
 24:0
-25:100
-26:100
+25:110
+26:110
 75:
 43:
