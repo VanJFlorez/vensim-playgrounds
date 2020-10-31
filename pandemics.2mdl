@@ -1,0 +1,122 @@
+{UTF-8}
+enferman=
+	tasa de infeccion*Suceptibles*Infectados
+	~	
+	~	ver la ecuación diferencial aquí: 
+		dS/dt = -beta*S*I
+	|
+
+Infectados= INTEG (
+	enferman-sanan,
+		1)
+	~	
+	~		|
+
+Recuperados= INTEG (
+	sanan,
+		0)
+	~	
+	~		|
+
+sanan=
+	Infectados*tasa de recuperacion
+	~	
+	~	ver la ecuación diferencial aquí: 
+		dR/dt = gamma*I
+	|
+
+Suceptibles= INTEG (
+	-enferman,
+		899)
+	~	
+	~		|
+
+tasa de infeccion=
+	0.001
+	~	
+	~		|
+
+tasa de recuperacion=
+	0.4
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 200
+	~	Week
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Week
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Week [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Week [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,Suceptibles,284,247,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,2,Infectados,599,248,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,3,Recuperados,953,246,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,5,7,2,4,0,0,22,0,0,0,-1--1--1,,1|(503,247)|
+1,6,7,1,100,0,0,22,0,0,0,-1--1--1,,1|(379,247)|
+11,7,0,441,247,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,8,enferman,441,266,30,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,10,12,3,4,0,0,22,0,0,0,-1--1--1,,1|(847,247)|
+1,11,12,2,100,0,0,22,0,0,0,-1--1--1,,1|(704,247)|
+11,12,0,776,247,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,13,sanan,776,266,19,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,14,1,8,1,0,0,0,0,64,0,-1--1--1,,1|(336,312)|
+1,15,2,8,1,0,0,0,0,64,0,-1--1--1,,1|(540,311)|
+10,16,tasa de infeccion,315,403,52,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,17,16,8,1,0,0,0,0,64,0,-1--1--1,,1|(406,369)|
+1,18,2,13,1,0,0,0,0,64,0,-1--1--1,,1|(681,318)|
+10,19,tasa de recuperacion,860,405,42,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,20,19,13,1,0,0,0,0,64,0,-1--1--1,,1|(786,362)|
+///---\\\
+:L<%^E!@
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+5:tasa de recuperacion
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:3
+41:0
+76:0
+77:0
+78:0
+79:0
+80:0
+81:0
+24:0
+25:0
+26:0
+75:
+43:
