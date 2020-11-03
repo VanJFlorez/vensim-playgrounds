@@ -1,0 +1,99 @@
+{UTF-8}
+muertes  = A FUNCTION OF( poblacion,tasa de muerte)
+	~	
+	~		|
+
+nacimientos  = A FUNCTION OF( poblacion,tasa de natalidad)
+	~	
+	~		|
+
+poblacion  = A FUNCTION OF( -muertes,nacimientos)
+	~	
+	~		|
+
+tasa de muerte  = A FUNCTION OF( )
+	~	
+	~		|
+
+tasa de natalidad  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 2050
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 2000
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,tasa de natalidad,172,522,53,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,2,tasa de muerte,744,596,46,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,3,poblacion,453,350,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+12,4,48,227,345,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,5,7,3,4,0,0,22,0,0,0,-1--1--1,,1|(372,345)|
+1,6,7,4,100,0,0,22,0,0,0,-1--1--1,,1|(278,345)|
+11,7,0,325,345,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,8,nacimientos,325,364,37,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,9,48,854,350,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,10,12,9,4,0,0,22,0,0,0,-1--1--1,,1|(759,350)|
+1,11,12,3,100,0,0,22,0,0,0,-1--1--1,,1|(577,350)|
+11,12,0,668,350,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,13,muertes,668,369,26,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,14,1,8,0,0,0,0,0,64,0,-1--1--1,,1|(243,448)|
+1,15,2,13,0,0,0,0,0,64,0,-1--1--1,,1|(708,489)|
+1,16,3,12,1,0,0,0,0,64,0,-1--1--1,,1|(560,296)|
+1,17,3,7,1,0,0,0,0,64,0,-1--1--1,,1|(383,262)|
+///---\\\
+:L<%^E!@
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:100,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+5:tasa de natalidad
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:0
+41:0
+76:0
+77:0
+78:0
+79:0
+80:0
+81:0
+24:0
+25:0
+26:0
+75:
+43:
